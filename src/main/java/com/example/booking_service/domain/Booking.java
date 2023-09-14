@@ -9,7 +9,6 @@ import lombok.Value;
 public class Booking {
     private Long id;
     private String userNo;
-    private String lectureName;
-    private Boolean isCanceled;
-
+    private Long lectureId;
+    private String status;
 }

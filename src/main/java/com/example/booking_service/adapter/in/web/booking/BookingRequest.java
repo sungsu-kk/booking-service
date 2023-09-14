@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class BookingRequest {
 
@@ -15,11 +16,10 @@ public class BookingRequest {
     @AllArgsConstructor
     public static class RegisterBookingCommand{
         @NotBlank(message = "사번을 입력해주세요")
-
         private String userNo;
-        @NotBlank(message = "강연의 제목을 입력해주세요")
 
-        private String title;
+        @NotBlank(message = "강연 ID를 입력해주세요")
+        private String id;
     }
 
 }

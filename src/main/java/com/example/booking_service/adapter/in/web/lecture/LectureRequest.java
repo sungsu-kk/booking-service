@@ -22,14 +22,15 @@ public class LectureRequest {
     public static class RegisterLectureCommand{
         @NotBlank(message = "강연자의 정보를 입력해주세요")
         private String speaker;
-        @NotBlank(message = "강연의 제목을 입력해주세요")
-        private String title;
+        @NotBlank(message = "강연장 정보를 입력해주세요")
+        private String place;
         @Min(value = 0)
-        private Long quantity;
+        private Long capacity;
         @Future(message = "강연 시작 시간은 현재 시간보다 미래여야 합니다.")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
         private ZonedDateTime startDateTime;
-        private String description;
+        @NotBlank(message="강연 내용을 입력해주세요")
+        private String contents;
     }
 
 }

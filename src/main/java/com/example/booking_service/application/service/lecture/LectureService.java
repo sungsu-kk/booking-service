@@ -19,11 +19,6 @@ class LectureService implements FindLectureUsecase, RegisterLectureUsecase {
     private final SaveLecturePort saveLecturePort;
 
     @Override
-    public Lecture searchLecture(String name) {
-       return loadLecturePort.findLecture(name);
-    }
-
-    @Override
     public List<Lecture> searchAllLecture(Pageable pageable) {
         return loadLecturePort.findAllLecture(pageable);
     }

@@ -17,6 +17,7 @@ import java.time.ZonedDateTime;
 public class BaseTimeEntity {
     @CreationTimestamp
     private ZonedDateTime createdAt;
+
     @UpdateTimestamp
     private ZonedDateTime updatedAt;
 }

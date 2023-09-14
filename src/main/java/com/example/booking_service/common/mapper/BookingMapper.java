@@ -11,16 +11,24 @@ public class BookingMapper {
     public Booking of(BookingRequest.RegisterBookingCommand command){
         return Booking.builder()
                 .userNo(command.getUserNo())
-                .lectureName(command.getTitle())
+                .lectureId(Long.parseLong(command.getId()))
                 .build();
     }
 
-    public BookingEntity of(Booking booking){
+    public Booking of(BookingEntity entity){
+        return Booking.builder()
+                .id(entity.getId())
+                .userNo(entity.getUserNo())
+                .lectureId(entity.getLectureEntity().getId())
+                .status(entity.getStatus().toString())
+                .build();
+    }
+
+    public BookingEntity of (Booking booking){
         return BookingEntity.builder()
                 .userNo(booking.getUserNo())
+                .status(BookingEntity.BookingStatus.BOOKED)
                 .build();
     }
-
-
 
 }

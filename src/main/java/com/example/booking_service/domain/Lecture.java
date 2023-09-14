@@ -13,9 +13,9 @@ import java.time.ZonedDateTime;
 public class Lecture {
     private Long id;
     private String speaker;
-    private  String title;
-    private  String description;
+    private  String place;
+    private  String contents;
     private  ZonedDateTime startDateTime;
-    private  Long quantity;
+    private  Long capacity;
 
 }

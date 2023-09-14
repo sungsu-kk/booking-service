@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface LoadLecturePort {
-
-    Lecture findLecture(String name);
-
+   Lecture findLecture(Long id);
    List<Lecture> findAllLecture(Pageable pageable);
 }

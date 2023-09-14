@@ -17,7 +17,7 @@ class BookingService implements RegisterBookingUsecase {
 
     @Override
     public void registerBooking(Booking booking) {
-        Lecture lecture = loadLecturePort.findLecture(booking.getLectureName());
-        saveBookingPort.saveBooking(booking,lecture);
+        Lecture lecture = loadLecturePort.findLecture(booking.getLectureId());
+        saveBookingPort.saveBooking(booking, lecture);
     }
 }

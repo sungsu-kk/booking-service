@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,12 +23,8 @@ class LectureController {
     private final LectureMapper lectureMapper;
 
     @GetMapping
-    public CommonResponse<?> searchLecture(@RequestParam(required = false) String name, Pageable pageable) {
-        if (name != null && !name.isEmpty()) {
-            return CommonResponse.success(findLectureUsecase.searchLecture(name));
-        } else {
-            return CommonResponse.success(findLectureUsecase.searchAllLecture(pageable));
-        }
+    public CommonResponse<List<Lecture>> searchLecture(Pageable pageable) {
+        return CommonResponse.success(findLectureUsecase.searchAllLecture(pageable));
     }
 
     @PostMapping

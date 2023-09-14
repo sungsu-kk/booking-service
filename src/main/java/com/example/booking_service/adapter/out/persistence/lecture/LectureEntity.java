@@ -22,15 +22,14 @@ import java.util.List;
 public class LectureEntity extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="lecture_id")
     private Long id;
     private String speaker;
-    private String title;
-    private String description;
+    private String place;
+    private String contents;
     private ZonedDateTime startDateTime;
-    private Long quantity;
+    private Long capacity;
 
-    @OneToMany(mappedBy = "lecture",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "lectureEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<BookingEntity> bookingList = new ArrayList<>();
 
 }

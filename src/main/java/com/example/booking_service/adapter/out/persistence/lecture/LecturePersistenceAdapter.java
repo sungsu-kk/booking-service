@@ -22,11 +22,11 @@ class LecturePersistenceAdapter implements LoadLecturePort, SaveLecturePort {
     private final LectureRepository lectureRepository;
     private final LectureMapper lectureMapper;
 
+
     @Override
-    public Lecture findLecture(String title) {
-        LectureEntity entity = lectureRepository.findByTitle(title)
-                .orElseThrow(NoSuchElementException::new);
-       return  lectureMapper.of(entity);
+    public Lecture findLecture(Long id) {
+        LectureEntity lectureEntity = lectureRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        return lectureMapper.of(lectureEntity);
     }
 
     @Override

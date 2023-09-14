@@ -10,7 +10,5 @@ import java.util.Optional;
 
 @Repository
 interface LectureRepository extends JpaRepository<LectureEntity,Long> {
-    Optional<LectureEntity> findByTitle(String title);
-
     Page<LectureEntity> findAll(Pageable pageable);
 }
