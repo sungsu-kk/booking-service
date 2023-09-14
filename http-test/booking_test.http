@@ -1,0 +1,18 @@
+###백오피스 API 목록
+###1. 강의 등록
+POST http://localhost:8080/lecture
+Content-Type: application/json
+
+{
+  "speaker":"김성수",
+  "title":"강의 제목",
+  "quantity":20,
+  "startDateTime":"2023-09-14 17:00:00",
+  "description":"this is description"
+}
+
+###2. 강의 조회 단건/전체
+GET http://localhost:8080/lecture
+
+###3. 강의 단건 조회
+GET http://localhost:8080/lecture?name=슈퍼

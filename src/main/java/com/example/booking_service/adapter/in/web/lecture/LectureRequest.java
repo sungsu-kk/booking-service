@@ -11,6 +11,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class LectureRequest {
@@ -27,12 +28,8 @@ public class LectureRequest {
         private Long quantity;
         @Future(message = "강연 시작 시간은 현재 시간보다 미래여야 합니다.")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-        private LocalDateTime startDateTime;
+        private ZonedDateTime startDateTime;
         private String description;
-
-        public Lecture toDomain(){
-            return new Lecture(speaker, title, description, startDateTime, quantity);
-        }
     }
 
 }

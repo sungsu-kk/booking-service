@@ -6,5 +6,6 @@ import com.example.booking_service.domain.Lecture;
 import java.util.Optional;
 
 public interface SaveLecturePort {
-    Optional<LectureEntity> saveLecture(Lecture lecture);
+    void saveLecture(Lecture lecture);
+
 }
