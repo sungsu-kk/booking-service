@@ -4,6 +4,7 @@ import com.example.booking_service.domain.Booking;
 
 public interface LoadBookingPort {
 
-    Booking findBooking(Booking booking);
+    Boolean isExisisBooking(Booking booking);
 
+    Booking findBooking(String userNo);
 }
