@@ -7,14 +7,16 @@ import com.example.booking_service.domain.Lecture;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.LockModeType;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-@Transactional
 @RequiredArgsConstructor
 @Component
 class LecturePersistenceAdapter implements LoadLecturePort, SaveLecturePort {
@@ -30,13 +32,23 @@ class LecturePersistenceAdapter implements LoadLecturePort, SaveLecturePort {
     }
 
     @Override
-    public List<Lecture> findAllLecture(Pageable pageable) {
+    public Page<Lecture> findAllLecture(Pageable pageable) {
         Page<LectureEntity> result = lectureRepository.findAll(pageable);
         if(result.isEmpty()){
-            throw new NoSuchElementException();
+            throw new NoSuchElementException("등록된 강연이 존재하지 않습니다.");
         }
-        return result.stream().map(lectureMapper::of).collect(Collectors.toList());
+        return result.map(lectureMapper::of);
     }
+
+    @Override
+    public Page<Lecture> findAvailiableLecture(LocalDateTime start, LocalDateTime end,Pageable pageable) {
+        Page<LectureEntity> result = lectureRepository.findAviableLecture(start,end,pageable);
+        if(result.isEmpty()){
+            throw new NoSuchElementException("신청 가능한 강연이 없습니다.");
+        }
+        return result.map(lectureMapper::of);
+    }
+
     @Override
     public void saveLecture(Lecture lecture) {
         lectureRepository.save(lectureMapper.of(lecture));

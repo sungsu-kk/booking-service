@@ -7,6 +7,7 @@ import com.example.booking_service.common.mapper.LectureMapper;
 import com.example.booking_service.common.response.CommonResponse;
 import com.example.booking_service.domain.Lecture;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +23,16 @@ class LectureController {
     private final RegisterLectureUsecase registerLectureUsecase;
     private final LectureMapper lectureMapper;
 
-    @GetMapping
-    public CommonResponse<List<Lecture>> searchLecture(Pageable pageable) {
+    @GetMapping("/all")
+    public CommonResponse<Page<Lecture>> searchLecture(Pageable pageable) {
         return CommonResponse.success(findLectureUsecase.searchAllLecture(pageable));
     }
+
+    @GetMapping
+    public CommonResponse<Page<Lecture>> searchAvailiable(Pageable pageable) {
+        return CommonResponse.success(findLectureUsecase.searchAvailiableLecture(pageable));
+    }
+
 
     @PostMapping
     public CommonResponse<?> registerLecture(@RequestBody @Valid LectureRequest.RegisterLectureCommand command) {

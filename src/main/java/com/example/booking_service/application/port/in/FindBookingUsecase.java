@@ -1,4 +1,4 @@
-package com.example.booking_service.application.port.in.booking;
+package com.example.booking_service.application.port.in;
 
 import com.example.booking_service.domain.Booking;
 

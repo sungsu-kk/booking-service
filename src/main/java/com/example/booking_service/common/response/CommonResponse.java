@@ -17,8 +17,9 @@ public class CommonResponse<T> {
 
     private Result result;
     private T data;
-    private String message;
     private String errorCode;
+    private String message;
+
 
     public static<T> CommonResponse<T> success(){
         return CommonResponse.<T>builder()

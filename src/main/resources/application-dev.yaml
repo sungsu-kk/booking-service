@@ -4,7 +4,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/booking?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/booking?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: develop
     password: develop!@
 
@@ -21,18 +21,15 @@ spring:
         show_sql: false
         format_sql: true
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
+logging.level:
+  org.hibernate.SQL: debug
 
 
 server:
   port: 8080
-  shoutdown: graceful
+  shutdown: graceful
   error:
     include-message: always
     include-binding-errors: always
     include-stacktrace: never
     include-exception: false
-

@@ -1,12 +1,10 @@
 package com.example.booking_service.adapter.out.persistence.booking;
 
-import com.example.booking_service.adapter.out.BaseTimeEntity;
 import com.example.booking_service.adapter.out.persistence.lecture.LectureEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -16,7 +14,7 @@ import javax.persistence.*;
 @Getter
 @Builder
 @Table(name="booking")
-public class BookingEntity extends BaseTimeEntity {
+public class BookingEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +29,11 @@ public class BookingEntity extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private BookingStatus status;
 
-    public void changeLecture(LectureEntity lectureEntity){
+    public void addLectureEntity(LectureEntity lectureEntity){
         this.lectureEntity = lectureEntity;
+    }
+    public void changeStatus(BookingStatus status){
+        this.status = status;
     }
 
     public enum BookingStatus{

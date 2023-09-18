@@ -4,11 +4,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Value;
 
-@Value
+@Data
 @Builder
 public class Booking {
     private Long id;
     private String userNo;
-    private Long lectureId;
+    private Lecture lecture;
     private String status;
 }

@@ -1,4 +1,4 @@
-package com.example.booking_service.adapter.in.web.booking;
+package com.example.booking_service.adapter.in.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class BookingRequest {
+public class
+
+BookingRequest {
 
     @Data
     @Getter

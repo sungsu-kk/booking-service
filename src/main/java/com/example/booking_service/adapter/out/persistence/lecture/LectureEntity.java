@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,17 +19,24 @@ import java.util.List;
 @Getter
 @Builder
 @Table(name="lecture")
-public class LectureEntity extends BaseTimeEntity {
+public class LectureEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String speaker;
     private String place;
     private String contents;
-    private ZonedDateTime startDateTime;
+    private LocalDateTime registerDateTime;
+    private LocalDateTime startDateTime;
     private Long capacity;
 
+    @Builder.Default
     @OneToMany(mappedBy = "lectureEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<BookingEntity> bookingList = new ArrayList<>();
+
+    public void addBooking(BookingEntity booking){
+        bookingList.add(booking);
+        booking.addLectureEntity(this);
+    }
 
 }
